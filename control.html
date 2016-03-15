@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+  
+{% block content %}
+  <h2>Control</h2>
+  <p1>This will eventually be the control page where you will be able to directly switch on/off the pump and control valve by submitting the weight you would like to drain from the tank.</p1>
+   
+   {% for message in form.name.errors %}
+  <div class="flash">{{ message }}</div>
+{% endfor %}
+   
+   
+   {% from "_formhelpers.html" import render_field %}
+  <form action="{{ url_for('control') }}" method=post>
+  <dl>
+  
+    {{ form.hidden_tag() }}  
+        
+    {{ render_field(form.name) }}
+    {{ render_field(form.submit) }}
+  </dl>
+  <!--<p><input type=submit value=Send> -->
+  
+  </form>
+
+{% endblock %}
